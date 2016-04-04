@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using WindowsFormsApplication2.Properties;
+using HeartRateApp.Properties;
 
 namespace HeartRateApp
 {
