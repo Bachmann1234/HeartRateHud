@@ -3,7 +3,7 @@
 
 This will connect to and display your heart rate as displayed by the [CMS50D+](http://www.amazon.com/CMS-Finger-Pulse-Oximeter-Sofware/dp/B00B8L8ZXE)
 
-The project assums you have an environment variable set "CMSPort" which should be the port the device is connected to. (Example: COM3)
+The project assumes you have an environment variable set "CMSPort" which should be the port the device is connected to. (Example: COM3)
 
 The project will attempt to connect 3 times. Qutting if it fails.
 
