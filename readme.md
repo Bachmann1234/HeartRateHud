@@ -9,7 +9,7 @@ The project will attempt to connect 3 times. Qutting if it fails.
 
 Once a connection is established the heart rate will display at the top of the screen. The window that appears is transparent and all mouse events pass though. Allowing this HUD to play over everything else you are doing on your machine.
 
-![Project in action](/InAction.png?raw=true "Optional Title")
+![Project in action](/InAction.png?raw=true "League of Legends Screenshot with heart rate displayed")
 
 ### Notes and expectation setting
 This is my first C#/windows gui project. There was a lot of "Um, how do I do x?". 
