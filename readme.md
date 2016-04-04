@@ -18,3 +18,5 @@ The project assums you have an environment variable set "CMSPort" which should b
 The project will attempt to connect 3 times. Qutting if it fails.
 
 Once a connection is established the heart rate will display at the top of the screen. The window that appears is transparent and all mouse events pass though. Allowing this HUD to play over everything else you are doing on your machine.
+
+![Project in action](/InAction.png?raw=true "Optional Title")
