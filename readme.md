@@ -19,4 +19,6 @@ The project will attempt to connect 3 times. Qutting if it fails.
 
 Once a connection is established the heart rate will display at the top of the screen. The window that appears is transparent and all mouse events pass though. Allowing this HUD to play over everything else you are doing on your machine.
 
+I literally just got this thing working so I probably got some bugs to figure out and I probably need more error handling with device communication
+
 ![Project in action](/InAction.png?raw=true "Optional Title")
