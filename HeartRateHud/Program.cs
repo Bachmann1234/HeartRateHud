@@ -37,6 +37,7 @@ namespace HeartRateApp
     {
         public string Hr { get; set; }
         public string Timestamp { get; set; }
+        public string UserId { get; set; }
     }
 
     public class IndexHandler : IHttpRequestHandler
