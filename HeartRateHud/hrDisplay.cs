@@ -4,10 +4,10 @@ using System.Windows.Forms;
 
 namespace HeartRateApp
 {
-    public partial class Form1 : Form
+    public partial class hrDisplay : Form
     {
         
-        public Form1()
+        public hrDisplay()
         {   
             InitializeComponent();
         }

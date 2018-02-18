@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
-using HeartRateApp.Properties;
 
 
 using System.Net;
@@ -10,43 +8,45 @@ using uhttpsharp;
 using uhttpsharp.Handlers;
 using uhttpsharp.Listeners;
 using uhttpsharp.RequestProviders;
-using System.Text;
 using System.Threading.Tasks;
-using uhttpsharp.Headers;
+using Newtonsoft.Json;
 
 namespace HeartRateApp
 {
+    delegate void SetTextCallback(string text);
+
     class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var form1 = new Form1();
+            var display = new hrDisplay();
             using (var httpServer = new HttpServer(new HttpRequestProvider()))
             {
                 httpServer.Use(new TcpListenerAdapter(new TcpListener(IPAddress.Any, 5000)));
-                httpServer.Use(new HttpRouter().With(string.Empty, new IndexHandler(form1.HeartRateDisplay())));
+                httpServer.Use(new HttpRouter().With(string.Empty, new IndexHandler(display.HeartRateDisplay())));
                 httpServer.Start();
             }
-            Application.Run(form1);
+            Application.Run(display);
         }
     }
+
+    class HrRequest
+    {
+        public string Hr { get; set; }
+        public string Timestamp { get; set; }
+    }
+
     public class IndexHandler : IHttpRequestHandler
     {
         private readonly HttpResponse _response;
-        private readonly HttpResponse _keepAliveResponse;
         private Label hrLabel;
 
         public IndexHandler(Label hrLabel)
         {
-            byte[] contents = Encoding.UTF8.GetBytes("Welcome to the Index.");
-            _keepAliveResponse = new HttpResponse(HttpResponseCode.Ok, contents, true);
-            _response = new HttpResponse(HttpResponseCode.Ok, "ok", false);
+            _response = new HttpResponse(HttpResponseCode.Ok, "ok", true);
             this.hrLabel = hrLabel;
         }
 
@@ -65,8 +65,12 @@ namespace HeartRateApp
 
         public Task Handle(IHttpContext context, Func<Task> next)
         {
-            context.Response = context.Request.Headers.KeepAliveConnection() ? _keepAliveResponse : _response;
-            SetText(context.Request.QueryString.GetByNameOrDefault("hr", "-1"));
+            context.Response = _response;
+            HrRequest requestdata = JsonConvert.DeserializeObject<HrRequest>(
+                System.Text.Encoding.Default.GetString(context.Request.Post.Raw)
+            );
+  
+            SetText(requestdata.Hr);
             return Task.Factory.GetCompleted();
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace HeartRateApp
 {
-    partial class Form1
+    partial class hrDisplay
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(hrDisplay));
             this.heartRateDisplay = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -38,15 +39,16 @@
             this.heartRateDisplay.BackColor = System.Drawing.Color.Red;
             this.heartRateDisplay.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.heartRateDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.heartRateDisplay.Font = new System.Drawing.Font("Arial Black", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.heartRateDisplay.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold);
             this.heartRateDisplay.ForeColor = System.Drawing.SystemColors.Window;
-            this.heartRateDisplay.Location = new System.Drawing.Point(518, 9);
+            this.heartRateDisplay.Location = new System.Drawing.Point(598, -2);
             this.heartRateDisplay.Name = "heartRateDisplay";
-            this.heartRateDisplay.Size = new System.Drawing.Size(63, 70);
+            this.heartRateDisplay.Size = new System.Drawing.Size(23, 25);
             this.heartRateDisplay.TabIndex = 0;
             this.heartRateDisplay.Text = "0";
+            this.heartRateDisplay.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // Form1
+            // hrDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -54,7 +56,8 @@
             this.ClientSize = new System.Drawing.Size(1250, 822);
             this.ControlBox = false;
             this.Controls.Add(this.heartRateDisplay);
-            this.Name = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "hrDisplay";
             this.Opacity = 0.25D;
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.SystemColors.Control;
